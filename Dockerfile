@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 MAINTAINER Esteban Lorenzano <esteban@lorenzano.eu>
 RUN apt-get update -y && apt-get install -y unzip curl gpg
 
