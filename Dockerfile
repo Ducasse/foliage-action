@@ -1,5 +1,5 @@
 FROM ubuntu:24.04
-MAINTAINER Esteban Lorenzano <esteban@lorenzano.eu>
+MAINTAINER Esteban Lorenzano <estebanlm@gmail.com>
 RUN apt-get update -y && apt-get install -y unzip curl gpg
 
 # add pharo-vm
