@@ -1,22 +1,19 @@
 FROM ubuntu:22.04
 MAINTAINER Esteban Lorenzano <esteban@lorenzano.eu>
-RUN apt-get update
-RUN apt-get install -y unzip 
-RUN apt-get install -y curl
-RUN apt-get install -y gpg
+RUN apt-get update -y && apt-get install -y unzip curl gpg
 
 # add pharo-vm
-RUN echo 'deb http://download.opensuse.org/repositories/devel:/languages:/pharo:/latest/xUbuntu_22.04/ /' | tee /etc/apt/sources.list.d/devel:languages:pharo:latest.list
-RUN curl -fsSL https://download.opensuse.org/repositories/devel:languages:pharo:latest/xUbuntu_22.04/Release.key | gpg --dearmor | tee /etc/apt/trusted.gpg.d/devel_languages_pharo_latest.gpg > /dev/null
-RUN apt-get update
-RUN apt-get install docker -y pharo
+RUN echo 'deb http://download.opensuse.org/repositories/devel:/languages:/pharo:/stable/xUbuntu_22.04/ /' | tee /etc/apt/sources.list.d/devel:languages:pharo:stable.list
+RUN curl -fsSL https://download.opensuse.org/repositories/devel:languages:pharo:stable/xUbuntu_22.04/Release.key | gpg --dearmor | tee /etc/apt/trusted.gpg.d/devel_languages_pharo_stable.gpg > /dev/null
+RUN apt-get update -y
+RUN apt-get install -y pharo
 
 # set work environment
 USER root
 WORKDIR /opt/foliage
 
 # download pharo image
-ADD http://files.pharo.org/get-files/100/pharoImage-x86_64.zip ./pharo64.zip
+ADD http://files.pharo.org/get-files/110/pharoImage-x86_64.zip ./pharo64.zip
 RUN set -eu; \
   unzip pharo64.zip; \
   rm pharo64.zip; \
