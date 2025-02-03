@@ -9,7 +9,7 @@ RUN apt-get install -y gpg
 RUN echo 'deb http://download.opensuse.org/repositories/devel:/languages:/pharo:/latest/xUbuntu_22.04/ /' | tee /etc/apt/sources.list.d/devel:languages:pharo:latest.list
 RUN curl -fsSL https://download.opensuse.org/repositories/devel:languages:pharo:latest/xUbuntu_22.04/Release.key | gpg --dearmor | tee /etc/apt/trusted.gpg.d/devel_languages_pharo_latest.gpg > /dev/null
 RUN apt-get update
-RUN apt-get install -y pharo9
+RUN apt-get install docker -y pharo
 
 # set work environment
 USER root
