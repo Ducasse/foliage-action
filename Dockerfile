@@ -5,8 +5,8 @@ RUN apt-get update -y && apt-get install -y unzip curl gpg
 # add pharo-vm
 RUN echo 'deb http://download.opensuse.org/repositories/devel:/languages:/pharo:/stable/xUbuntu_24.04/ /' | tee /etc/apt/sources.list.d/devel:languages:pharo:stable.list
 RUN curl -fsSL https://download.opensuse.org/repositories/devel:languages:pharo:stable/xUbuntu_24.04/Release.key | gpg --dearmor | tee /etc/apt/trusted.gpg.d/devel_languages_pharo_stable.gpg > /dev/null
-RUN apt-get update
-RUN apt-get install pharo
+RUN apt-get update -y
+RUN apt-get install -y pharo
 
 # set work environment
 USER root
